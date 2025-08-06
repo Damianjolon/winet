@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>{{ data ? 'Editar' : 'Agregar' }} Empleado</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+
+    <mat-form-field class="full-width">
+      <mat-label>Nombre completo</mat-label>
+      <input matInput formControlName="nombre_completo">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Puesto</mat-label>
+      <input matInput formControlName="puesto">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Salario</mat-label>
+      <input matInput type="number" formControlName="salario">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Fecha de ingreso</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha_ingreso">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+</mat-dialog-actions>

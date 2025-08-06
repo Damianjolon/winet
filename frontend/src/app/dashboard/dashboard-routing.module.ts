@@ -15,9 +15,9 @@ const routes: Routes = [
       { path: 'bienvenida', component: BienvenidaComponent },
       { path: 'clientes', component: ClientesComponent },
       { path: 'inventario', component: InventarioComponent },
-      {path: 'empleados', component: EmpleadosComponent},
-      {path: 'recibos', component: RecibosComponent},
-      { path: '', redirectTo: 'bienvenida', pathMatch: 'full' } // por defecto
+      { path: 'empleados', loadChildren: () => import('../empleados/empleados.module').then(m => m.EmpleadosModule) },
+      { path: 'recibos', component: RecibosComponent },
+      { path: '', redirectTo: 'bienvenida', pathMatch: 'full' }
     ]
   }
 ];

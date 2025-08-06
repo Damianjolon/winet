@@ -1,5 +1,4 @@
 <mat-sidenav-container class="dashboard-container">
-  <!-- Sidebar -->
   <mat-sidenav mode="side" opened class="dashboard-sidenav">
     <mat-toolbar color="primary">WINET</mat-toolbar>
     <mat-nav-list>
@@ -12,11 +11,7 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <!-- Contenido -->
   <mat-sidenav-content>
-    <app-toolbar></app-toolbar>
-    <div class="dashboard-content">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet> <!-- 👈 ESTE ES CLAVE -->
   </mat-sidenav-content>
 </mat-sidenav-container>

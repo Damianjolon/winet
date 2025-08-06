@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const empleadosController = require('../controllers/empleados.controller');
+const empleadosCtrl = require('../controllers/empleadosController');
 
-// Endpoints
-router.get('/', empleadosController.getEmpleados);
-router.post('/', empleadosController.createEmpleado);
+router.get('/', empleadosCtrl.getEmpleados);
+router.post('/', empleadosCtrl.addEmpleado);
+router.put('/:id', empleadosCtrl.updateEmpleado);
+router.delete('/:id', empleadosCtrl.deleteEmpleado);
 
 module.exports = router;

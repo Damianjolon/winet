@@ -1,3 +1,4 @@
+import { CdkTableDataSourceInput } from '@angular/cdk/table';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./empleados.component.scss']
 })
 export class EmpleadosComponent {
+displayedColumns: any;
+dataSource: CdkTableDataSourceInput<any> | undefined;
 
 }

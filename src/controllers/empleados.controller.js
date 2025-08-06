@@ -1,33 +1,49 @@
-const db = require('../models/db');
+const db = require('../db');
 
-// GET: listar empleados
+// SELECT
 exports.getEmpleados = async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM empleados ORDER BY id DESC');
-    res.json(rows);
-  } catch (error) {
-    console.error(error);
+    const [rows] = await db.query('CALL sp_getEmpleados()');
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ message: 'Error al obtener empleados' });
   }
 };
 
-// POST: crear nuevo empleado
-exports.createEmpleado = async (req, res) => {
+// INSERT
+exports.addEmpleado = async (req, res) => {
   try {
-    const { nombre, puesto, salario } = req.body;
+    const { nombre, puesto, salario, fechaIngreso } = req.body;
+    await db.query('CALL sp_createEmpleado(?,?,?,?)', [nombre, puesto, salario, fechaIngreso]);
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error al agregar empleado' });
+  }
+};
 
-    if (!nombre || !puesto || !salario) {
-      return res.status(400).json({ message: 'Faltan datos requeridos' });
-    }
+// UPDATE
+exports.updateEmpleado = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nombre, puesto, salario, fechaIngreso } = req.body;
+    await db.query('CALL sp_updateEmpleado(?,?,?,?,?)', [id, nombre, puesto, salario, fechaIngreso]);
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error al actualizar empleado' });
+  }
+};
 
-    const [result] = await db.query(
-      'INSERT INTO empleados (nombre, puesto, salario) VALUES (?, ?, ?)',
-      [nombre, puesto, salario]
-    );
-
-    res.json({ id: result.insertId, nombre, puesto, salario });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error al crear empleado' });
+// DELETE
+exports.deleteEmpleado = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await db.query('CALL sp_deleteEmpleado(?)', [id]);
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error al eliminar empleado' });
   }
 };

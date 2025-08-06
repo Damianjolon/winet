@@ -1,9 +1,15 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Gestión de Empleados</mat-card-title>
+    <mat-card-subtitle>Módulo de empleados</mat-card-subtitle>
   </mat-card-header>
+
+  <mat-toolbar>
+  <button mat-button routerLink="./">Ver Empleados</button>
+  <button mat-button routerLink="crear">Nuevo Empleado</button>
+</mat-toolbar>
+
   <mat-card-content>
-    <p>Aquí podrás agregar, editar y eliminar empleados.</p>
-    <button mat-raised-button color="primary">➕ Nuevo Empleado</button>
+    <router-outlet></router-outlet>
   </mat-card-content>
 </mat-card>
