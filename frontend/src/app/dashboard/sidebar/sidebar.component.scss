@@ -1,0 +1,40 @@
+.sidenav-container {
+  height: 100vh;
+}
+.sidenav {
+  width: 250px;
+  background: #090f5f;
+  color: white;
+}
+.logo {
+  text-align: center;
+  padding: 20px;
+}
+mat-icon {
+  margin-right: 10px;
+}
+.content {
+  padding: 20px;
+}
+
+.dashboard-container {
+  height: 100vh; // ocupar toda la pantalla
+}
+
+.dashboard-sidenav {
+  width: 250px; // ancho fijo del sidebar
+  background: #fff;
+  border-right: 1px solid #ddd;
+}
+
+.dashboard-content {
+  padding: 20px;
+  height: calc(100vh - 64px); // 64px es la altura de la toolbar
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+.active {
+  background: rgba(25, 118, 210, 0.1);
+  border-left: 4px solid #1976d2;
+}

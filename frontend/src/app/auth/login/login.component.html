@@ -1,0 +1,30 @@
+<div class="login-wrapper">
+  <mat-card class="login-card mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>Acceso al Sistema</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" class="login-form">
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario</mat-label>
+          <input matInput [(ngModel)]="username" name="username" required>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [(ngModel)]="password" name="password" type="password" required>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="full-width">
+          Ingresar
+        </button>
+
+        <p *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</p>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
