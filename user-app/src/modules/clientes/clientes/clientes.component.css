@@ -1,0 +1,150 @@
+.clientes-container {
+  padding: 20px;
+}
+
+/* ----- BARRA SUPERIOR ----- */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* Buscador */
+/* Botón buscador estilo creativo */
+.search-btn .mat-form-field-flex {
+  background-color: #7e22ce !important; /* Morado base */
+  border: none !important;
+  border-radius: 8px !important;
+  height: 40px !important;
+  padding: 0 10px !important;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.search-btn:hover .mat-form-field-flex {
+  background-color: #6b21a8 !important; /* Morado más oscuro */
+  transform: scale(1.02);
+}
+
+.search-btn input {
+  color: white !important;
+  font-weight: 500;
+}
+
+.search-btn input::placeholder {
+  color: rgba(255,255,255,0.8) !important;
+}
+
+/* Ícono dentro de círculo blanco */
+.search-btn .search-icon {
+  background-color: white;
+  color: #7e22ce !important;
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 20px;
+  margin-right: 6px;
+}
+
+/* Para que el buscador y botones queden alineados */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botones */
+.btn-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+/* ----- TABLA ----- */
+.tabla-container {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Encabezado */
+.tabla-clientes th {
+  background-color: #7e22ce;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+}
+
+/* Filas alternadas */
+.tabla-clientes tr:nth-child(odd) {
+  background-color: #f9f5ff;
+}
+
+.tabla-clientes tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Hover fila */
+.tabla-clientes tr:hover {
+  background-color: #f3e8ff;
+  transition: background-color 0.2s ease;
+}
+
+/* Celdas */
+.tabla-clientes td {
+  padding: 10px 12px;
+  vertical-align: middle;
+  color: #333; /* Texto legible */
+  font-weight: 500;
+}
+
+/* Avatar */
+.avatar-icon {
+  font-size: 30px;
+  color: #7e22ce;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Saldos */
+.saldo-positivo {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.saldo-negativo {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.saldo-cero {
+  color: #6b7280;
+}
+
+/* Íconos de acción */
+.mat-icon-button {
+  transition: transform 0.2s ease;
+}
+
+.mat-icon-button:hover {
+  transform: scale(1.1);
+}

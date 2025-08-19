@@ -1,0 +1,74 @@
+<mat-sidenav-container class="dashboard-container">
+
+  <!-- Menú lateral que se expande al pasar el mouse -->
+  <mat-sidenav
+    mode="side"
+    [opened]="true"
+    class="dashboard-sidenav"
+    [class.collapsed]="!isHovered"
+    (mouseenter)="isHovered = true"
+    (mouseleave)="isHovered = false">
+
+    <div class="logo">
+      <img src="assets/images/logo_winet.png" alt="WINET Logo" class="logo-img">
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
+        <mat-icon>home</mat-icon>
+        <span *ngIf="isHovered">Bienvenida</span>
+      </a>
+      <a mat-list-item routerLink="/clientes" routerLinkActive="active">
+        <mat-icon>group</mat-icon>
+        <span *ngIf="isHovered">Gestión de Clientes</span>
+      </a>
+      <a mat-list-item routerLink="/empleados" routerLinkActive="active">
+        <mat-icon>badge</mat-icon>
+        <span *ngIf="isHovered">Gestión de Empleados</span>
+      </a>
+      <a mat-list-item routerLink="/recibos" routerLinkActive="active">
+        <mat-icon>receipt_long</mat-icon>
+        <span *ngIf="isHovered">Gestión de Recibos</span>
+      </a>
+      <a mat-list-item routerLink="/inventario" routerLinkActive="active">
+        <mat-icon>inventory_2</mat-icon>
+        <span *ngIf="isHovered">Inventario</span>
+      </a>
+
+      <a mat-list-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span *ngIf="isHovered">Cerrar Sesión</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido -->
+<mat-sidenav-content>
+  <mat-toolbar class="top-toolbar">
+    <span>Dashboard</span>
+    <span class="spacer"></span>
+
+    <!-- Botón Administración de Usuarios -->
+    <button mat-button routerLink="/usuarios">
+  <mat-icon>people</mat-icon>
+  Administración de Usuarios
+</button>
+
+
+    <button mat-icon-button>
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

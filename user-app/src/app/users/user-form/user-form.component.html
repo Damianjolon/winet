@@ -1,0 +1,102 @@
+<div class="user-form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Crear Usuario</mat-card-title>
+      <mat-card-subtitle>Complete la información para el nuevo usuario</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form-grid">
+
+        <!-- Nombre -->
+        <mat-form-field appearance="outline">
+          <mat-label>Primer Nombre</mat-label>
+          <input matInput formControlName="primer_nombre" required />
+        </mat-form-field>
+
+        <!-- Apellido -->
+        <mat-form-field appearance="outline">
+          <mat-label>Segundo Nombre</mat-label>
+          <input matInput formControlName="segundo_nombre" />
+        </mat-form-field>
+
+        <!-- DPI -->
+        <mat-form-field appearance="outline">
+          <mat-label>Primer Apellido</mat-label>
+          <input matInput formControlName="primer_apellido" required />
+        </mat-form-field>
+
+          <mat-form-field appearance="outline">
+          <mat-label>Segundo Apellido</mat-label>
+          <input matInput formControlName="segundo_apellido" />
+        </mat-form-field>
+
+        <!-- Usuario -->
+        <mat-form-field appearance="outline">
+          <mat-label>Usuario*</mat-label>
+          <input matInput formControlName="usuario" required />
+        </mat-form-field>
+
+        <!-- Contraseña -->
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" required />
+        </mat-form-field>
+
+        <!-- Rol -->
+        <mat-form-field appearance="outline">
+        <mat-label>Rol*</mat-label>
+        <mat-select formControlName="id_rol" required>
+          <mat-option *ngFor="let rol of roles" [value]="rol.id">
+            {{ rol.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+       <!-- Acceso a Módulos -->
+          <mat-card class="sub-card">
+      <mat-card-title class="sub-card-title">Acceso a Módulos</mat-card-title>
+      <div class="checkbox-list">
+        <mat-checkbox *ngFor="let modulo of modulos"
+                  (change)="toggleModulo(modulo.id, $event.checked)">
+      {{ modulo.nombre || '⚠️ Sin nombre' }}
+    </mat-checkbox>
+
+    <!-- 👇 Mostrar mensaje si no hay módulos -->
+    <p *ngIf="modulos.length === 0" class="empty-msg">
+      No hay módulos disponibles
+    </p>
+  </div>
+</mat-card>
+
+<!-- Permisos -->
+<mat-card class="sub-card">
+  <mat-card-title class="sub-card-title">Acciones Permitidas</mat-card-title>
+  <div class="checkbox-list">
+    <mat-checkbox *ngFor="let permiso of permisos"
+                  (change)="togglePermiso(permiso.id, $event.checked)">
+      {{ permiso.nombre || '⚠️ Sin nombre' }}
+    </mat-checkbox>
+
+    <!-- 👇 Mostrar mensaje si no hay permisos -->
+    <p *ngIf="permisos.length === 0" class="empty-msg">
+      No hay permisos disponibles
+    </p>
+  </div>
+</mat-card>
+
+        <!-- Botones -->
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
+            Guardar
+          </button>
+          <button mat-raised-button color="warn" type="button">
+            Cancelar
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

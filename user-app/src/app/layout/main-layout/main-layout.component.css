@@ -1,0 +1,80 @@
+.dashboard-container {
+  height: 100vh;
+}
+
+/* Sidebar */
+.dashboard-sidenav {
+  background: linear-gradient(180deg, #7b8a99, #4b5d6b); /* degradado gris/azulado */
+  color: white;
+  width: 250px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+}
+
+.dashboard-sidenav.collapsed {
+  width: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.logo-img {
+  max-width: 80%;
+  height: auto;
+}
+
+/* Links del sidebar */
+mat-nav-list a {
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  margin: 4px 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+mat-nav-list a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
+}
+
+mat-nav-list a.active {
+  background-color: #1abc9c; /* Verde menta */
+  color: white;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+/* Barra superior */
+.top-toolbar {
+  background: linear-gradient(90deg, #7b8a99, #4b5d6b);
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding: 20px;
+  background-color: #f4f6f8;
+  min-height: calc(100vh - 64px);
+}
+
+.top-toolbar button {
+  color: white;
+}
+
+.top-toolbar .mat-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+}

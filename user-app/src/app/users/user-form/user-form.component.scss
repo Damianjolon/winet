@@ -1,0 +1,82 @@
+.user-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 900px;
+}
+
+.user-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // ✅ dos columnas
+  gap: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.sub-card {
+  grid-column: 1 / -1;
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.sub-card-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333; // ✅ fuerza contraste aunque uses tema oscuro
+}
+
+.checkbox-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.empty-msg {
+  color: #888;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+::ng-deep .mat-mdc-checkbox label,
+::ng-deep .mat-mdc-checkbox .mdc-label {
+  color: #333 !important;  // ✅ texto oscuro para que siempre se vea
+  font-weight: 500;
+}
+
+/* Texto de los labels */
+::ng-deep .mat-mdc-checkbox .mdc-label {
+  color: #333 !important; /* negro para fondo claro */
+  font-weight: 500;
+}
+
+/* Color del cuadro vacío */
+::ng-deep .mat-mdc-checkbox .mdc-checkbox__background {
+  border-color: #333 !important; /* borde visible */
+}
+
+/* Color cuando está seleccionado */
+::ng-deep .mat-mdc-checkbox .mdc-checkbox__native-control:checked + .mdc-checkbox__background {
+  background-color: #1976d2 !important; /* azul Material */
+  border-color: #1976d2 !important;
+}
+
+/* Opcional: hover */
+::ng-deep .mat-mdc-checkbox:hover .mdc-checkbox__background {
+  border-color: #1976d2 !important;
+}

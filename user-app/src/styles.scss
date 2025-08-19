@@ -1,0 +1,36 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav {
+  width: 250px;
+  background-color: #880e4f; /* Color corporativo */
+  color: white;
+}
+
+mat-sidenav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+mat-sidenav a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+mat-sidenav-content {
+  padding: 20px;
+  background-color: #f4f6f8; /* Fondo del contenido */
+  min-height: 100vh;
+}
+
+mat-toolbar {
+  background-color: #880e4f;
+  color: white;
+}
+

@@ -1,0 +1,36 @@
+<h1>Panel Administrativo</h1>
+
+<div class="stats-container">
+  <mat-card class="stat-card">
+    <mat-card-title>Clientes</mat-card-title>
+    <mat-card-content>120 registrados</mat-card-content>
+  </mat-card>
+
+  <mat-card class="stat-card">
+    <mat-card-title>Empleados</mat-card-title>
+    <mat-card-content>35 activos</mat-card-content>
+  </mat-card>
+
+  <mat-card class="stat-card">
+    <mat-card-title>Inventario</mat-card-title>
+    <mat-card-content>540 artículos</mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card class="table-card">
+  <mat-card-title>Últimos registros</mat-card-title>
+  <table mat-table [dataSource]="data" class="mat-elevation-z2">
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element">{{element.fecha}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

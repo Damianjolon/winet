@@ -1,0 +1,28 @@
+<mat-sidenav mode="side" opened class="dashboard-sidenav">
+  <div class="logo">
+    <img src="assets/images/logo_winet.png" alt="WINET Logo">
+  </div>
+
+  <mat-nav-list>
+
+    <!-- Todos -->
+    <a mat-list-item routerLink="/dashboard">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </a>
+
+    <!-- Solo ADMIN -->
+    <a *ngIf="auth.esAdmin()" mat-list-item routerLink="/clientes">
+      <mat-icon>group</mat-icon> Clientes
+    </a>
+
+    <!-- Solo ADMIN -->
+    <a *ngIf="auth.esAdmin()" mat-list-item routerLink="/inventario">
+      <mat-icon>inventory_2</mat-icon> Inventario
+    </a>
+
+    <!-- Si quieres que el operador vea solo listado de clientes -->
+    <a *ngIf="auth.esOperador()" mat-list-item routerLink="/clientes-listado">
+      <mat-icon>group</mat-icon> Ver Clientes
+    </a>
+  </mat-nav-list>
+</mat-sidenav>
