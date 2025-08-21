@@ -22,7 +22,7 @@ app.use('/api/roles', require('../modules/roles/roles.routes'));
 app.use('/api/modulos', require('../modules/modulos/modulos.routes'));
 app.use('/api/usuarios', require('../modules/usuarios/usuarios.routes'));
 
-const cors = require('cors');
+
 app.use(cors());
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-form',
@@ -20,7 +21,8 @@ export class UserFormComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar   // ✅ inyectamos snackbar
   ) {
     this.userForm = this.fb.group({
       primer_nombre: ['', Validators.required],
@@ -37,21 +39,17 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Cargar opciones dinámicas
     this.userService.getRoles().subscribe(r => this.roles = r);
     this.userService.getModulos().subscribe(m => this.modulos = m);
     this.userService.getPermisos().subscribe(p => this.permisos = p);
 
-    // 📌 Revisar si venimos en modo edición
     this.idUsuario = Number(this.route.snapshot.paramMap.get('id'));
     if (this.idUsuario) {
       this.editMode = true;
-      // ⚡ sería mejor un getUsuarioById, pero con lo que tienes:
       this.userService.listarUsuarios().subscribe(usuarios => {
         const user = usuarios.find(u => u.id === this.idUsuario);
         if (user) {
           this.userForm.patchValue(user);
-          // Para no forzar password vacío
           this.userForm.get('password')?.reset();
         }
       });
@@ -76,29 +74,37 @@ export class UserFormComponent implements OnInit {
     if (this.userForm.invalid) return;
 
     if (this.editMode) {
-      // 🔹 Actualizar
       this.userService.actualizarUsuario(this.idUsuario, this.userForm.value).subscribe({
         next: () => {
-          alert('Usuario actualizado con éxito');
+          this.showMessage('✅ Usuario actualizado con éxito');
           this.router.navigate(['/usuarios']);
         },
         error: (err) => {
           console.error('❌ Error al actualizar:', err);
-          alert('Error al actualizar usuario');
+          this.showMessage('⚠️ Error al actualizar usuario', true);
         }
       });
     } else {
-      // 🔹 Crear
       this.userService.crearUsuario(this.userForm.value).subscribe({
         next: () => {
-          alert('Usuario creado con éxito');
+          this.showMessage('✅ Usuario creado con éxito');
           this.router.navigate(['/usuarios']);
         },
         error: (err) => {
           console.error('❌ Error al crear:', err);
-          alert('Error al crear usuario');
+          this.showMessage('⚠️ Error al crear usuario', true);
         }
       });
     }
+  }
+
+  // 📌 Método para mostrar snackbar
+  private showMessage(message: string, error: boolean = false): void {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: error ? ['error-snackbar'] : ['success-snackbar']
+    });
   }
 }
