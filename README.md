@@ -1,5 +1,4 @@
-# sitio-spa
-
+# sitio-winet
 # en scripts agrega el alias de start:api
 ejecuta como npm run start:api para simular el servidor json
 
