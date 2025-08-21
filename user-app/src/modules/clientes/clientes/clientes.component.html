@@ -1,35 +1,21 @@
 <div class="clientes-container">
   <div class="clientes-card">
 
-    <!-- Título -->
     <h2 class="titulo-clientes">Gestión de Clientes</h2>
     <p class="subtitulo-clientes">Consulta y administra clientes de manera ágil y eficiente.</p>
 
-    <!-- Tarjetas estadísticas -->
     <div class="stats-container">
-      <div class="stat-box">
-        <div class="stat-number">120</div>
-        Clientes registrados
-      </div>
-      <div class="stat-box">
-        <div class="stat-number">80</div>
-        Clientes activos
-      </div>
-      <div class="stat-box">
-        <div class="stat-number">15</div>
-        Clientes con saldo negativo
-      </div>
+      <div class="stat-box"><div class="stat-number">120</div>Clientes registrados</div>
+      <div class="stat-box"><div class="stat-number">80</div>Clientes activos</div>
+      <div class="stat-box"><div class="stat-number">15</div>Clientes con saldo negativo</div>
     </div>
 
-    <!-- Barra superior -->
     <div class="top-bar">
-      <!-- Buscador -->
       <mat-form-field appearance="outline" class="search-field search-btn">
         <mat-icon matPrefix class="search-icon">search</mat-icon>
         <input matInput placeholder="Buscar por nombre o email" [(ngModel)]="buscar">
       </mat-form-field>
 
-      <!-- Botones -->
       <button mat-stroked-button class="btn-icon glass-btn">
         <mat-icon>help_outline</mat-icon> Ayuda
       </button>
@@ -48,54 +34,58 @@
       </div>
     </div>
 
-    <!-- Tabla -->
     <div class="tabla-container">
-      <table mat-table [dataSource]="clientes" class="tabla-clientes">
+      <table mat-table [dataSource]="dataFiltrada" class="tabla-clientes">
+
         <!-- Avatar -->
         <ng-container matColumnDef="avatar">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let cliente">
-            <mat-icon *ngIf="!cliente.avatar" class="avatar-icon">account_circle</mat-icon>
-            <img *ngIf="cliente.avatar" [src]="cliente.avatar" class="avatar">
+          <th mat-header-cell *matHeaderCellDef class="mat-column-avatar"></th>
+          <td mat-cell *matCellDef="let c" class="mat-column-avatar">
+            <div class="avatar-cell">
+              <mat-icon *ngIf="!c.avatar" class="avatar-icon">account_circle</mat-icon>
+              <img *ngIf="c.avatar" [src]="c.avatar" class="avatar" alt="avatar">
+            </div>
           </td>
         </ng-container>
 
         <!-- Nombre -->
         <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let cliente">{{cliente.nombre}}</td>
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let c">{{ c.nombre }}</td>
         </ng-container>
 
         <!-- Celular -->
         <ng-container matColumnDef="celular">
-          <th mat-header-cell *matHeaderCellDef> Celular/WhatsApp </th>
-          <td mat-cell *matCellDef="let cliente">{{cliente.celular}}</td>
+          <th mat-header-cell *matHeaderCellDef>Celular/WhatsApp</th>
+          <td mat-cell *matCellDef="let c">{{ c.celular }}</td>
         </ng-container>
 
         <!-- Email -->
         <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let cliente">{{cliente.email}}</td>
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let c">{{ c.email }}</td>
         </ng-container>
 
         <!-- Saldo -->
         <ng-container matColumnDef="saldo">
-          <th mat-header-cell *matHeaderCellDef> Saldo actual </th>
-          <td mat-cell *matCellDef="let cliente" [ngClass]="getSaldoClass(cliente.saldo)">
-            {{ cliente.saldo | currency:'GTQ':'symbol':'1.2-2' }}
+          <th mat-header-cell *matHeaderCellDef>Saldo actual</th>
+          <td mat-cell *matCellDef="let c" [ngClass]="getSaldoClass(c.saldo)">
+            {{ c.saldo | currency:'GTQ':'symbol':'1.2-2' }}
           </td>
         </ng-container>
 
         <!-- Acciones -->
         <ng-container matColumnDef="acciones">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let cliente">
-            <button mat-icon-button color="primary" matTooltip="Ver cliente">
-              <mat-icon>visibility</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" matTooltip="Eliminar cliente">
-              <mat-icon>delete</mat-icon>
-            </button>
+          <th mat-header-cell *matHeaderCellDef class="mat-column-acciones"></th>
+          <td mat-cell *matCellDef="let c" class="mat-column-acciones">
+            <div class="acciones-cell">
+              <button mat-icon-button color="primary" matTooltip="Ver cliente" (click)="ver(c)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" matTooltip="Eliminar cliente" (click)="borrar(c)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </td>
         </ng-container>
 

@@ -5,6 +5,7 @@ import { EmpleadosRoutingModule } from './empleados-routing.module';
 import { EmpleadosComponent } from './empleados.component';
 
 
+
 @NgModule({
   declarations: [
     EmpleadosComponent
