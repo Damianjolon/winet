@@ -1,0 +1,56 @@
+<section class="app-superficie">
+<div class="grid">
+<div class="tarjeta-glass">
+<div class="tarjeta-encabezado">
+<mat-icon>today</mat-icon>
+<h3 style="margin:0">Tareas del día</h3>
+</div>
+<div class="tarjeta-cuerpo">
+<table class="tabla-oscura">
+<thead>
+<tr>
+<th>Tarea</th>
+<th>Prioridad</th>
+<th>Estado</th>
+<th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let t of tareasHoy">
+<td>{{ t.titulo }}</td>
+<td><span class="etiqueta" [ngClass]="{ 'advertencia': t.prioridad==='ALTA', 'exito': t.prioridad==='BAJA' }">{{ t.prioridad }}</span></td>
+<td><span class="etiqueta" [ngClass]="{ 'exito': t.estado==='COMPLETADA', 'advertencia': t.estado==='EN_PROCESO' }">{{ t.estado }}</span></td>
+<td>
+<button mat-stroked-button class="btn-fantasma"><mat-icon>done</mat-icon></button>
+<button mat-stroked-button class="btn-fantasma"><mat-icon>edit</mat-icon></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div class="tarjeta-glass">
+<div class="tarjeta-encabezado">
+<mat-icon>view_kanban</mat-icon>
+<h3 style="margin:0">Tablero de estados</h3>
+</div>
+<div class="tarjeta-cuerpo tablero">
+<div class="col">
+<h4>Pendiente</h4>
+<div class="pill">Configurar correos</div>
+<div class="pill">Capacitar nuevo ingreso</div>
+</div>
+<div class="col">
+<h4>En proceso</h4>
+<div class="pill">Actualizar catálogo</div>
+</div>
+<div class="col">
+<h4>Completadas</h4>
+<div class="pill hecho">Enviar reporte</div>
+</div>
+</div>
+</div>
+</div>
+</section>

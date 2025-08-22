@@ -1,3 +1,6 @@
+import empleadosRouter from './empleados/empleados.routes';
+import municipiosRouter from './municipios/municipios.routes';
+
 require('dotenv').config({ path: __dirname + '/../.env' });
 require('dotenv').config();
 const express = require('express');
@@ -21,6 +24,9 @@ app.use((err, _req, res, _next) => {
 app.use('/api/roles', require('../modules/roles/roles.routes'));
 app.use('/api/modulos', require('../modules/modulos/modulos.routes'));
 app.use('/api/usuarios', require('../modules/usuarios/usuarios.routes'));
+app.use('/api/empleados', require('../modules/empleados/empleados.routes'));
+app.use('/api/municipios', require('../modules/municipios/municipios.routes'));
+
 
 
 app.use(cors());

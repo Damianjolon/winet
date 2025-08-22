@@ -1,0 +1,40 @@
+<section class="app-superficie">
+<div class="tarjeta-glass">
+<div class="tarjeta-encabezado">
+<mat-icon>assignment_ind</mat-icon>
+<h3 style="margin:0">Asignar tarea a empleado #{{ idEmpleado }}</h3>
+</div>
+<div class="tarjeta-cuerpo">
+<form [formGroup]="form" (ngSubmit)="asignar()" class="grid-form">
+<mat-form-field appearance="fill" class="input-oscuro">
+<mat-label>Título</mat-label>
+<input matInput formControlName="titulo" />
+</mat-form-field>
+<mat-form-field appearance="fill" class="input-oscuro">
+<mat-label>Descripción</mat-label>
+<textarea matInput rows="3" formControlName="descripcion"></textarea>
+</mat-form-field>
+<mat-form-field appearance="fill" class="input-oscuro">
+<mat-label>Prioridad</mat-label>
+<mat-select formControlName="prioridad">
+<mat-option value="BAJA">Baja</mat-option>
+<mat-option value="MEDIA">Media</mat-option>
+<mat-option value="ALTA">Alta</mat-option>
+</mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill" class="input-oscuro">
+<mat-label>Fecha</mat-label>
+<input matInput [matDatepicker]="dp" formControlName="fecha" />
+<mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+<mat-datepicker #dp></mat-datepicker>
+</mat-form-field>
+<div class="acciones">
+<button mat-stroked-button class="btn-fantasma" routerLink="/empleados/tareas">Cancelar</button>
+<button mat-raised-button class="btn-primario" type="submit" [disabled]="form.invalid">
+<mat-icon>send</mat-icon> Asignar
+</button>
+</div>
+</form>
+</div>
+</div>
+</section>
